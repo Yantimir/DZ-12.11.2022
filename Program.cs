@@ -28,24 +28,54 @@
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
-Console.Write("Введите число M: ");
-int M = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите число N: ");
-int N = Convert.ToInt32(Console.ReadLine());
-int result = 0;
-void PrintSum(int M, int N, int result)
+// Console.Write("Введите число M: ");
+// int M = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число N: ");
+// int N = Convert.ToInt32(Console.ReadLine());
+// int result = 0;
+// void PrintSum(int M, int N, int result)
+// {
+//   result = result + N;
+//   if (N <= M)
+//   {
+//     Console.Write($"Сумма чисел равна: {result}");
+//     return;
+//   }
+//   if (M > N)
+//   {
+//     M = N;
+//     Console.Write($"Сумма чисел равна: {N}");
+//   }
+//   PrintSum(M, N - 1, result);
+// }
+// PrintSum(M, N, result);
+
+
+
+// Задача 68: Напишите программу вычисления функции Аккермана 
+// с помощью рекурсии. Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
+
+Console.Write("Введите неотрицательное число m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите неотрицательное число n: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int akkermanFunction = Akkerman(m, n);
+int Akkerman(int m, int n)
 {
-  result = result + N;
-  if (N <= M)
+  if (m == 0)
   {
-    Console.Write($"Сумма чисел равна: {result}");
-    return;
+    return n + 1;
   }
-  if (M > N)
+  else if(n == 0 && m > 0)
   {
-    M = N;
-    Console.Write($"Сумма чисел равна: {N}");
+    return Akkerman(m - 1, 1);
   }
-  PrintSum(M, N - 1, result);
+  else
+  {
+    return Akkerman(m - 1, Akkerman(m, n - 1));
+  }
 }
-PrintSum(M, N, result);
+Console.Write($"Результат вычисления функци Аккермана: {akkermanFunction}");
+Akkerman(m, n);
