@@ -5,16 +5,47 @@
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 
-Console.Write("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите число: ");
+// int number = Convert.ToInt32(Console.ReadLine());
 
-void PrintNumberS(int number)
+// void PrintNumbers(int number)
+// {
+//   if (number > 0)
+//   {
+//     Console.Write(number + ", "); 
+//     number--;
+//     PrintNumbers(number);
+//   }
+// }
+// PrintNumbers(number);
+
+
+
+// Задача 66: Задайте значения M и N. 
+// Напишите программу, которая найдёт сумму натуральных элементов 
+// в промежутке от M до N.
+
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+Console.Write("Введите число M: ");
+int M = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число N: ");
+int N = Convert.ToInt32(Console.ReadLine());
+int result = 0;
+void PrintSum(int M, int N, int result)
 {
-  if (number > 0)
+  result = result + N;
+  if (N <= M)
   {
-    Console.Write(number + ", "); 
-    number--;
-    PrintNumberS(number);
+    Console.Write($"Сумма чисел равна: {result}");
+    return;
   }
+  if (M > N)
+  {
+    M = N;
+    Console.Write($"Сумма чисел равна: {N}");
+  }
+  PrintSum(M, N - 1, result);
 }
-PrintNumberS(number);
+PrintSum(M, N, result);
